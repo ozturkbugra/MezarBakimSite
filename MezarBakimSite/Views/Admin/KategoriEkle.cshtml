@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Kategori Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kategori Ekle</h2>
+
+<form action="/Admin/KategoriEkle" method="post">
+    <input type="text"  maxlength="100" name="KategoriAdi" placeholder="Kategori Adı" class="form-control" />
+    <br />
+    <button type="submit" class="btn btn-success">Ekle</button>
+
+</form>
+

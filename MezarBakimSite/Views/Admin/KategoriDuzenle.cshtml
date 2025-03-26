@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Kategori Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kategori Düzenle</h2>
+
+
+<form action="/Admin/KategoriDuzenle" method="post">
+    <input type="hidden" name="ID" value="@ViewBag.k.ID"/>
+    <input type="text" maxlength="100" name="KategoriAdi" placeholder="Kategori Adı" class="form-control" value="@ViewBag.k.KategoriAdi" />
+    <br />
+    <button type="submit" class="btn btn-warning">Düzenle</button>
+
+</form>
+

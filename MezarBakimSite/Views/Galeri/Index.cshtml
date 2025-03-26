@@ -1,0 +1,89 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<MezarBakimSite.Models.GaleriView>
+
+@{
+    ViewBag.Title = "Ankara Mezar Bakımı – Hemen Bilgi Al | Gamze Mezar Bakım";
+    ViewBag.Description = "Ankara'da mezar bakımı, çiçeklendirme ve mermer onarım hizmetleri sunuyoruz. Sevdiklerinizin mezarını özenle temizleyip bakımını yapıyoruz.";
+    ViewBag.Keywords = "Ankara mezar bakımı, mezar temizliği, çiçeklendirme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Sayfa Başlığı -->
+<div class="page-title dark-background" style="background-image: url(/Content/UpConstruction/assets/img/17.jpg);">
+    <div class="container position-relative">
+        <h1>Galeri</h1>
+        <nav class="breadcrumbs">
+            <ol>
+                <li><a href="/anasayfa">Ana Sayfa</a></li>
+                <li class="current">Galeri</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<!-- Projeler Bölümü -->
+<section id="projects" class="projects section">
+    <div class="container">
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+            <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+                <li data-filter="*" class="filter-active">Tümü</li>
+                @foreach (var item in ViewBag.Kategoriler)
+                {
+                    <li data-filter=".filter-@item.ID">@item.KategoriAdi</li>
+                }
+            </ul>
+
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-@item.KategoriID">
+                        <div class="portfolio-content h-100">
+                            <img src="@item.ResimURL" class="img-fluid" alt="" loading="lazy">
+                            <div class="portfolio-info">
+                                <h4>@item.KategoriAdi</h4>
+                                <p>Gamze Çiçekçilik</p>
+                                <a href="@item.ResimURL" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@{
+    int mevcutSayfa = Model.PageNumber;
+}
+
+<section id="blog-pagination" class="blog-pagination section">
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <ul>
+                <!-- Önceki Sayfa -->
+                <li class="@(Model.HasPreviousPage ? "" : "disabled")">
+                    <a href="@Url.Action("Index", new { sayfa = Model.PageNumber - 1 })">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                </li>
+
+                <!-- Sayfa Numaraları -->
+                @for (int i = 1; i <= Model.PageCount; i++)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", new { sayfa = i })" class="@(i == mevcutSayfa ? "active" : "")">@i</a>
+                    </li>
+                }
+
+                <!-- Sonraki Sayfa -->
+                <li class="@(Model.HasNextPage ? "" : "disabled")">
+                    <a href="@Url.Action("Index", new { sayfa = Model.PageNumber + 1 })">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

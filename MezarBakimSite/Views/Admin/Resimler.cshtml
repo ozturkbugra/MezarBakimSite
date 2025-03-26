@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Resimler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Resimler</h2>
+
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#verticalycentered">
+    Ekle
+</button>
+
+<br /><br />
+
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#verticalycentered1">
+    Toplu Resim Ekle
+</button>
+
+<div class="modal fade" id="verticalycentered" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ekle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="/Admin/ResimEkle" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+
+
+                    <input type="file" name="ResimURL" id="ResimURL" class="form-control" required />
+                    <br />
+                    Kategori
+                    <select name="KategoriID" class="form-select">
+                        @foreach (var item in ViewBag.Kategoriler)
+                        {
+                            <option value="@item.ID">@item.KategoriAdi</option>
+                        }
+                    </select>
+                    <br />
+
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="submit" class="btn btn-success">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div><!-- End Vertically centered Modal-->
+
+
+<div class="modal fade" id="verticalycentered1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Toplu Ekle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="/Admin/TopluResimEkle" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+
+
+                    <input type="file" name="ResimURL" id="ResimURL" class="form-control" multiple />
+
+                    <br />
+                    Kategori
+                    <select name="KategoriID" class="form-select">
+                        @foreach (var item in ViewBag.Kategoriler)
+                        {
+                            <option value="@item.ID">@item.KategoriAdi</option>
+                        }
+                    </select>
+                    <br />
+
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="submit" class="btn btn-success">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div><!-- End Vertically centered Modal-->
+
+<br />
+
+<div class="card-body">
+    @{
+        int sira = 1;
+    }
+
+    <div class="table-responsive">
+        <table class="table table-borderless table-striped table-hover datatable">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Resim</th>
+
+                    <th scope="col">Kategori</th>
+
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.Liste)
+                {
+
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>
+                            <img src="@item.ResimURL" style="width:60%" />
+                        </td>
+                        <td>@item.KategoriAdi</td>
+
+                        <td>
+                            <a href="/Admin/ResimSil/@item.ID" class="badge bg-danger" onclick="return confirm('Emin misiniz?')">Sil</a>
+
+                        </td>
+                    </tr>
+                    sira++;
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

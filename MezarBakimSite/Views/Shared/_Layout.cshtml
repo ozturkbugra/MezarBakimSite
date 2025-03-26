@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.Description">
+    <meta name="keywords" content="@ViewBag.Keywords">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="@Request.Url">
+    <script type="application/ld+json">
+        {
+          "@@context": "https://schema.org/",
+          "@@type": "Product",
+          "name": "Ankara Mezar Bakımı",
+          "image": "",
+          "description": "Ankara'da mezar bakımı, çiçeklendirme ve mermer onarım hizmetleri sunuyoruz. Sevdiklerinizin mezarını özenle temizleyip bakımını yapıyoruz.",
+          "brand": {
+            "@@type": "Brand",
+            "name": "Ankara Mezar Bakımı"
+          }
+        }
+    </script>
+
+    <!-- Favicons -->
+    <link href="~/Content/UpConstruction/assets/img/favicon.png" rel="icon">
+    <link href="~/Content/UpConstruction/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Content/UpConstruction/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/UpConstruction/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Content/UpConstruction/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Content/UpConstruction/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="~/Content/UpConstruction/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Content/UpConstruction/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="~/Content/UpConstruction/assets/css/main.css" rel="stylesheet">
+
+
+
+
+</head>
+
+<body class="index-page">
+
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+            <a href="/anasayfa" class="logo d-flex align-items-center">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <img src="~/Content/UpConstruction/assets/img/logo.png" alt="">
+                <!--<h1 class="sitename">UpConstruction</h1> <span>.</span> -->
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    @if (Session["Aktif"].ToString() == "Ana Sayfa")
+                    {
+
+
+                        <li><a href="/anasayfa" class="active">Ana Sayfa</a></li>
+
+                    }
+                    else
+                    {
+                        <li><a href="/anasayfa">Ana Sayfa</a></li>
+
+                    }
+
+                    @if (Session["Aktif"].ToString() == "Hakkımızda")
+                    {
+
+
+                        <li><a href="/hakkimizda" class="active">Hakkımızda</a></li>
+
+                    }
+                    else
+                    {
+                        <li><a href="/hakkimizda">Hakkımızda</a></li>
+
+                    }
+
+                    <li><a href="/anasayfa#constructions">HİZMETLERİMİZ</a></li>
+
+                    @if (Session["Aktif"].ToString() == "Fiyat Listesi")
+                    {
+
+
+                        <li><a href="/fiyat-listesi" class="active">FİYAT LİSTESİ</a></li>
+
+                    }
+                    else
+                    {
+                        <li><a href="/fiyat-listesi">FİYAT LİSTESİ</a></li>
+
+                    }
+
+
+                    @if (Session["Aktif"].ToString() == "Galeri")
+                    {
+
+
+                        <li><a href="/galeri" class="active">GALERİ</a></li>
+
+                    }
+                    else
+                    {
+                        <li><a href="/galeri">GALERİ</a></li>
+
+                    }
+
+
+                    @if (Session["Aktif"].ToString() == "İletişim")
+                    {
+
+
+                        <li><a href="/iletisim" class="active">İLETİŞİM</a></li>
+
+                    }
+                    else
+                    {
+                        <li><a href="/iletisim">İLETİŞİM</a></li>
+
+                    }
+
+
+
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="main">
+        @RenderBody()
+    </main>
+
+
+    <footer id="footer" class="footer dark-background mt-3">
+
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <a href="/anasayfa" class="logo d-flex align-items-center">
+                        <span class="sitename">Gamze Çiçekçilik</span>
+                    </a>
+                    <div class="footer-contact pt-3">
+                        <p>Aşağı Yahyalar, Anadolu Blv no 200</p>
+                        <p>Yenimahalle / Ankara</p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>0542 440 39 60</span></p>
+                        <p><strong>Email:</strong> <span>ibrahimayseli156@gmail.com</span></p>
+                    </div>
+                    <!--<div class="social-links d-flex mt-4">
+                      <a href=""><i class="bi bi-twitter-x"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>-->
+                </div>
+
+                <div class="col-lg-4 col-md-4 footer-links">
+                    <h4>Kullanabileceğiniz Linkler</h4>
+                    <ul>
+                        <li><a href="/anasayfa">Ana Sayfa</a></li>
+                        <li><a href="/hakkimizda">Hakkımızda</a></li>
+                        <li><a href="/galeri">Galeri</a></li>
+                        <li><a href="/fiyat-listesi">Fiyat Listesi</a></li>
+                        <li><a href="/iletisim">İletişim</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 footer-links">
+                    <h4>Hizmetlerimiz</h4>
+                    <ul>
+                        <li><a href="#">Mezar Bakımı</a></li>
+                        <li><a href="#">Mezar Yapımı</a></li>
+                        <li><a href="#">Pezyaj Çalışmaları</a></li>
+                        <li><a href="#">Çiçek Seracılığı</a></li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>
+                © <span>Copyright</span> <strong class="px-1 sitename">Gamze Çiçekçilik</strong> <span>Tüm Hakları Saklıdır</span>
+            </p>
+            <div class="credits">
+
+                Designed by <a href="https://bugrasoft.com/">BugraSoft</a>
+            </div>
+        </div>
+
+    </footer>
+
+    <a href="tel:905424403960" class="btn btn-danger telephone-button"
+       target="_blank" title="Telefon ile bize ulaşın">
+        <i class="bi bi-telephone"></i>
+    </a>
+
+    <a href="https://wa.me/905424403960?text=Merhaba%20size%20ulaşmak%20istiyorum" class="btn btn-success whatsapp-button"
+       target="_blank" title="WhatsApp ile bize ulaşın">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Content/UpConstruction/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/UpConstruction/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/Content/UpConstruction/assets/vendor/aos/aos.js"></script>
+    <script src="~/Content/UpConstruction/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Content/UpConstruction/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Content/UpConstruction/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Content/UpConstruction/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/UpConstruction/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+    <!-- Main JS File -->
+    <script src="~/Content/UpConstruction/assets/js/main.js"></script>
+
+</body>
+
+</html>

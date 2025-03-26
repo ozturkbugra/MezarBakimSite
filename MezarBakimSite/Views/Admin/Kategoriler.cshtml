@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kategoriler</h2>
+<br />
+<a href="/Admin/KategoriEkle" class="btn btn-success">Ekle</a>
+
+<br />
+
+<div class="card-body">
+
+    <div class="table-responsive">
+        <table class="table table-borderless datatable">
+            <thead>
+                <tr>
+
+
+                    <th scope="col">Başlık</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.Liste)
+                {
+                    <tr>
+
+                        <td>@item.KategoriAdi</td>
+
+
+                        <td>
+                            <a href="/Admin/KategoriDuzenle/@item.ID" class="badge bg-warning">Güncelle</a> |
+                            <a href="/Admin/KategoriSil/@item.ID" class="badge bg-danger" onclick="return confirm('Emin misiniz?')">Sil</a>
+
+                        </td>
+                    </tr>
+                }
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
